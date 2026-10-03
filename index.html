@@ -1,1566 +1,1515 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abdelrahman Teaima | AWS Cloud Security Specialist</title>
-
-<meta name="description"
-content="Abdelrahman Teaima — AWS Cloud Security graduate focused on securing cloud environments, AWS networking, identity, monitoring and defensive security.">
-
-<style>
-:root{
-  --bg:#060912;
-  --surface:#0b1220;
-  --surface2:#0e1728;
-  --text:#edf6ff;
-  --muted:#91a3b8;
-  --line:rgba(148,163,184,.15);
-  --cyan:#22d3ee;
-  --blue:#3b82f6;
-  --green:#34d399;
-  --max:1120px;
-  --radius:20px;
-  --shadow:0 24px 80px rgba(0,0,0,.34)
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0
-}
-
-html{
-  scroll-behavior:smooth
-}
-
-body{
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:
-    radial-gradient(900px 500px at 8% -5%,rgba(14,116,144,.22),transparent 62%),
-    radial-gradient(800px 500px at 100% 20%,rgba(37,99,235,.18),transparent 65%),
-    var(--bg);
-  color:var(--text);
-  line-height:1.6;
-  overflow-x:hidden
-}
-
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  opacity:.25;
-  background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-  background-size:44px 44px;
-  mask-image:linear-gradient(to bottom,black,transparent 75%)
-}
-
-a{
-  color:inherit;
-  text-decoration:none
-}
-
-.container{
-  width:min(var(--max),calc(100% - 40px));
-  margin:auto
-}
-
-header{
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:rgba(6,9,18,.78);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--line)
-}
-
-.nav{
-  height:72px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between
-}
-
-.brand{
-  font:600 13px ui-monospace,SFMono-Regular,Menlo,monospace;
-  color:var(--cyan)
-}
-
-.brand b{
-  color:var(--green)
-}
-
-nav{
-  display:flex;
-  gap:28px;
-  font:500 12px ui-monospace,monospace;
-  color:var(--muted)
-}
-
-nav a:hover{
-  color:var(--cyan)
-}
-
-.nav-cta,
-.btn.primary{
-  background:var(--cyan);
-  color:#031017;
-  border:1px solid var(--cyan);
-  font-weight:800
-}
-
-.nav-cta{
-  padding:9px 14px;
-  border-radius:9px;
-  font:700 12px ui-monospace,monospace
-}
-
-.menu{
-  display:none;
-  background:none;
-  border:1px solid var(--line);
-  color:white;
-  padding:8px;
-  border-radius:8px
-}
-
-.hero{
-  padding:92px 0 72px;
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:70px;
-  align-items:center;
-  min-height:650px
-}
-
-.eyebrow{
-  display:inline-flex;
-  gap:9px;
-  align-items:center;
-  padding:7px 11px;
-  border:1px solid rgba(34,211,238,.25);
-  background:rgba(34,211,238,.07);
-  border-radius:999px;
-  color:#8deaf7;
-  font:600 11px ui-monospace,monospace;
-  margin-bottom:22px
-}
-
-.dot{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:var(--green);
-  box-shadow:0 0 14px var(--green)
-}
-
-h1{
-  font-size:clamp(46px,7vw,78px);
-  line-height:.98;
-  letter-spacing:-.055em;
-  margin-bottom:18px
-}
-
-.gradient{
-  background:linear-gradient(110deg,#fff 5%,#67e8f9 48%,#3b82f6);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent
-}
-
-.role{
-  font:600 17px ui-monospace,monospace;
-  color:var(--cyan);
-  min-height:29px;
-  margin-bottom:16px
-}
-
-.hero p{
-  max-width:650px;
-  color:#b5c3d4;
-  font-size:16px
-}
-
-.actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:11px;
-  margin-top:28px
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:12px 17px;
-  border-radius:10px;
-  border:1px solid var(--line);
-  background:rgba(14,23,40,.8);
-  font:700 12px ui-monospace,monospace;
-  transition:.2s
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-  border-color:rgba(34,211,238,.45)
-}
-
-.btn.primary:hover{
-  box-shadow:0 12px 30px rgba(34,211,238,.2)
-}
-
-.visual{
-  position:relative;
-  display:grid;
-  place-items:center
-}
-
-/* ثابت — بدون دوران */
-.orbit{
-  width:min(390px,80vw);
-  aspect-ratio:1;
-  border-radius:50%;
-  padding:7px;
-  background:
-    conic-gradient(
-      from 20deg,
-      transparent 0 18%,
-      var(--cyan),
-      var(--blue),
-      transparent 45% 70%,
-      var(--green),
-      transparent 82%
-    )
-}
-
-.avatar{
-  width:100%;
-  height:100%;
-  border-radius:50%;
-  padding:13px;
-  background:var(--bg);
-  position:relative
-}
-
-.avatar img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:50%;
-  border:1px solid rgba(34,211,238,.28)
-}
-
-.badge{
-  position:absolute;
-  bottom:8%;
-  left:50%;
-  transform:translateX(-50%);
-  white-space:nowrap;
-  padding:8px 13px;
-  border:1px solid rgba(34,211,238,.3);
-  background:rgba(6,9,18,.9);
-  border-radius:999px;
-  color:#9beaf5;
-  font:700 11px ui-monospace,monospace
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:35px
-}
-
-.stat{
-  border:1px solid var(--line);
-  background:rgba(11,18,32,.65);
-  padding:15px;
-  border-radius:14px
-}
-
-.stat strong{
-  display:block;
-  font-size:20px;
-  color:white
-}
-
-.stat span{
-  font-size:11px;
-  color:var(--muted);
-  font-family:ui-monospace,monospace
-}
-
-section{
-  padding:74px 0
-}
-
-.section-head{
-  margin-bottom:30px
-}
-
-.kicker{
-  color:var(--cyan);
-  font:700 11px ui-monospace,monospace;
-  margin-bottom:8px
-}
-
-.section-head h2{
-  font-size:clamp(28px,4vw,40px);
-  letter-spacing:-.035em
-}
-
-.section-head p{
-  color:var(--muted);
-  font-size:14px;
-  max-width:680px;
-  margin-top:8px
-}
-
-.panel,
-.card{
-  background:
-    linear-gradient(
-      180deg,
-      rgba(14,23,40,.86),
-      rgba(8,13,24,.88)
-    );
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow)
-}
-
-.about{
-  display:grid;
-  grid-template-columns:1.35fr .65fr;
-  gap:26px
-}
-
-.panel{
-  padding:34px
-}
-
-.panel h3{
-  font-size:24px;
-  margin-bottom:14px
-}
-
-.panel p{
-  color:#aebdce;
-  font-size:14px;
-  margin-bottom:13px
-}
-
-.checks{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px
-}
-
-.check{
-  padding:12px;
-  border-radius:10px;
-  background:rgba(255,255,255,.025);
-  border:1px solid var(--line);
-  font:600 11px ui-monospace,monospace;
-  color:#b7c5d6
-}
-
-.check b{
-  color:var(--green);
-  margin-right:5px
-}
-
-.pillars{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px
-}
-
-.card{
-  padding:24px;
-  transition:.22s
-}
-
-.card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(34,211,238,.34)
-}
-
-.num{
-  font:700 10px ui-monospace,monospace;
-  color:var(--cyan);
-  letter-spacing:.08em
-}
-
-.card h3{
-  font-size:17px;
-  margin:7px 0 8px
-}
-
-.card p{
-  color:var(--muted);
-  font-size:13px
-}
-
-.projects{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:16px
-}
-
-.project{
-  padding:28px
-}
-
-.project.featured{
-  grid-column:1/-1
-}
-
-.tagrow{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  align-items:center;
-  margin-bottom:14px;
-  font:700 10px ui-monospace,monospace;
-  color:var(--green)
-}
-
-.tag{
-  border:1px solid rgba(34,211,238,.2);
-  padding:4px 7px;
-  border-radius:6px;
-  color:#8deaf7;
-  background:rgba(34,211,238,.05)
-}
-
-.project h3{
-  font-size:22px;
-  margin-bottom:8px
-}
-
-.project p{
-  color:#aebdce;
-  font-size:13px;
-  max-width:850px
-}
-
-.tech{
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-  margin-top:18px
-}
-
-.tech span{
-  font:600 10px ui-monospace,monospace;
-  color:#9eb0c3;
-  background:#101a2b;
-  border:1px solid var(--line);
-  padding:6px 8px;
-  border-radius:7px
-}
-
-.skills{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px
-}
-
-.skill-list{
-  list-style:none;
-  margin-top:15px;
-  display:grid;
-  gap:9px
-}
-
-.skill-list li{
-  color:#aab9ca;
-  font:500 11px ui-monospace,monospace
-}
-
-.skill-list li:before{
-  content:"→";
-  color:var(--cyan);
-  margin-right:8px
-}
-
-.credentials{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px
-}
-
-.credential small{
-  color:var(--cyan);
-  font:700 10px ui-monospace,monospace
-}
-
-.credential h3{
-  margin:8px 0 3px
-}
-
-.credential p{
-  color:var(--muted);
-  font-size:12px
-}
-
-.contact{
-  padding:60px 20px;
-  text-align:center
-}
-
-.contact .panel{
-  padding:50px 25px;
-  background:
-    radial-gradient(
-      500px 220px at 50% 0,
-      rgba(34,211,238,.13),
-      transparent 70%
-    ),
-    rgba(10,17,30,.9)
-}
-
-.contact h2{
-  font-size:clamp(28px,5vw,46px);
-  line-height:1.08;
-  max-width:800px;
-  margin:0 auto 15px
-}
-
-.contact p{
-  color:var(--muted);
-  max-width:650px;
-  margin:0 auto
-}
-
-.contact .actions{
-  justify-content:center
-}
-
-footer{
-  border-top:1px solid var(--line);
-  padding:28px 0;
-  color:#66778c;
-  font:500 11px ui-monospace,monospace;
-  text-align:center
-}
-
-.reveal{
-  opacity:0;
-  transform:translateY(18px);
-  transition:.65s ease
-}
-
-.reveal.show{
-  opacity:1;
-  transform:none
-}
-
-#progress{
-  position:fixed;
-  top:0;
-  left:0;
-  width:0;
-  height:2px;
-  background:linear-gradient(90deg,var(--cyan),var(--blue));
-  z-index:40
-}
-
-@media(max-width:850px){
-
-  nav,
-  .nav-cta{
-    display:none
-  }
-
-  .menu{
-    display:block
-  }
-
-  .hero{
-    grid-template-columns:1fr;
-    gap:45px;
-    padding-top:65px
-  }
-
-  .visual{
-    order:-1
-  }
-
-  .orbit{
-    width:270px
-  }
-
-  .about,
-  .credentials{
-    grid-template-columns:1fr
-  }
-
-  .pillars,
-  .skills{
-    grid-template-columns:1fr 1fr
-  }
-
-  .projects{
-    grid-template-columns:1fr
-  }
-
-  .project.featured{
-    grid-column:auto
-  }
-}
-
-@media(max-width:560px){
-
-  .container{
-    width:min(
-      var(--max),
-      calc(100% - 28px)
-    )
-  }
-
-  .hero{
-    padding:50px 0 35px;
-    min-height:auto
-  }
-
-  h1{
-    font-size:48px
-  }
-
-  .stats{
-    grid-template-columns:1fr
-  }
-
-  .stats .stat{
-    text-align:center
-  }
-
-  .pillars,
-  .skills,
-  .projects{
-    grid-template-columns:1fr
-  }
-
-  .panel,
-  .project,
-  .card{
-    padding:21px
-  }
-
-  .checks{
-    grid-template-columns:1fr
-  }
-
-  section{
-    padding:55px 0
-  }
-}
-
-@media(prefers-reduced-motion:reduce){
-
-  html{
-    scroll-behavior:auto
-  }
-
-  .reveal{
-    opacity:1;
-    transform:none
-  }
-
-  .btn,
-  .card{
-    transition:none
-  }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abdelrahman Teaima - AWS Cloud Security, Cloud Deployment and Web Application Hosting">
+    <title>Abdelrahman Teaima | AWS Cloud Security</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #050b13;
+            --bg2: #081321;
+            --card: rgba(13, 27, 43, .78);
+            --line: rgba(148, 163, 184, .16);
+            --text: #edf6ff;
+            --muted: #8ea4b9;
+            --blue: #4da3ff;
+            --cyan: #25d8df;
+            --green: #25d39a;
+            --gold: #e7bd61;
+            --shadow: 0 24px 70px rgba(0,0,0,.35);
+            --radius: 22px;
+            --max: 1160px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, system-ui, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 80% 10%, rgba(37,216,223,.10), transparent 28%),
+                radial-gradient(circle at 15% 25%, rgba(77,163,255,.10), transparent 30%),
+                var(--bg);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: .22;
+            background-image:
+                linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+            background-size: 70px 70px;
+            mask-image: linear-gradient(to bottom, black, transparent 70%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(var(--max), calc(100% - 40px));
+            margin: auto;
+        }
+
+        .mono {
+            font-family: "JetBrains Mono", monospace;
+        }
+
+        /* NAV */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(5,11,19,.72);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+
+        .nav-inner {
+            height: 74px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-weight: 800;
+            letter-spacing: -.03em;
+        }
+
+        .brand-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--blue), var(--cyan));
+            color: #03101c;
+            font-weight: 900;
+        }
+
+        .brand span {
+            font-size: 15px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            color: #9fb3c7;
+            transition: .25s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-cta {
+            padding: 10px 15px;
+            border: 1px solid rgba(37,216,223,.35);
+            border-radius: 12px;
+            color: #dffcff !important;
+            background: rgba(37,216,223,.07);
+        }
+
+        .menu {
+            display: none;
+            background: none;
+            border: 0;
+            color: white;
+            font-size: 24px;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            align-items: center;
+            padding: 130px 0 80px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 11px;
+            border: 1px solid rgba(37,216,223,.25);
+            border-radius: 999px;
+            background: rgba(37,216,223,.06);
+            color: #a9f8f5;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 15px var(--green);
+        }
+
+        h1 {
+            font-size: clamp(43px, 6.5vw, 78px);
+            line-height: .98;
+            letter-spacing: -.065em;
+            max-width: 780px;
+        }
+
+        .gradient {
+            background: linear-gradient(100deg,#fff 10%,#8edcff 55%,#4de2d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            margin-top: 25px;
+            max-width: 690px;
+            color: #9db1c4;
+            font-size: 17px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 13px 18px;
+            border-radius: 13px;
+            border: 1px solid var(--line);
+            font-size: 13px;
+            font-weight: 800;
+            transition: .25s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg,var(--blue),var(--cyan));
+            color: #03101c;
+            border: 0;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,.035);
+            color: #dce9f5;
+        }
+
+        .hero-note {
+            margin-top: 18px;
+            color: #6f879c;
+            font-size: 11px;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .profile-frame {
+            position: relative;
+            max-width: 350px;
+            margin: auto;
+            padding: 10px;
+            border-radius: 30px;
+            background: linear-gradient(
+                145deg,
+                rgba(77,163,255,.6),
+                rgba(37,216,223,.18),
+                rgba(255,255,255,.08)
+            );
+            box-shadow: var(--shadow);
+        }
+
+        .profile-inner {
+            background: #091522;
+            border-radius: 22px;
+            padding: 12px;
+            overflow: hidden;
+        }
+
+        .profile-inner img {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 17px;
+            background: #0e2134;
+        }
+
+        .status-card {
+            position: absolute;
+            left: -38px;
+            bottom: 28px;
+            padding: 15px 17px;
+            border: 1px solid var(--line);
+            background: rgba(7,18,30,.92);
+            backdrop-filter: blur(14px);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            min-width: 190px;
+        }
+
+        .status-card strong {
+            display: block;
+            font-size: 13px;
+        }
+
+        .status-card small {
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .scan {
+            position: absolute;
+            right: -35px;
+            top: 30px;
+            width: 150px;
+            padding: 13px;
+            border-radius: 15px;
+            border: 1px solid rgba(37,216,223,.22);
+            background: rgba(5,18,27,.88);
+            font-family: "JetBrains Mono";
+            font-size: 9px;
+            color: #76e6df;
+        }
+
+        .scan div {
+            margin: 3px 0;
+        }
+
+        .ok {
+            color: #50e3aa;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 105px 0;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            align-items: end;
+            margin-bottom: 42px;
+        }
+
+        .kicker {
+            color: #5fdce0;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: clamp(30px,4vw,48px);
+            letter-spacing: -.05em;
+            line-height: 1.05;
+            margin-top: 9px;
+        }
+
+        .section-head p {
+            max-width: 480px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .card {
+            background: linear-gradient(
+                180deg,
+                rgba(15,32,50,.8),
+                rgba(8,20,33,.75)
+            );
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: 0 18px 55px rgba(0,0,0,.15);
+        }
+
+        /* ABOUT */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card h3 {
+            font-size: 17px;
+            margin-bottom: 11px;
+        }
+
+        .card p {
+            font-size: 13px;
+            color: #94aabd;
+        }
+
+        .quote {
+            border-left: 3px solid var(--cyan);
+            padding-left: 18px;
+            margin-top: 20px;
+            color: #d8e8f4;
+            font-weight: 600;
+        }
+
+        /* SKILLS */
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 14px;
+        }
+
+        .skill {
+            padding: 20px;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: rgba(255,255,255,.025);
+            transition: .25s;
+        }
+
+        .skill:hover {
+            transform: translateY(-4px);
+            border-color: rgba(77,163,255,.35);
+        }
+
+        .skill-icon {
+            font-size: 20px;
+            margin-bottom: 13px;
+        }
+
+        .skill h3 {
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            font-family: "JetBrains Mono";
+            font-size: 9px;
+            color: #9fc0d7;
+            border: 1px solid var(--line);
+            padding: 5px 7px;
+            border-radius: 7px;
+            background: rgba(255,255,255,.025);
+        }
+
+        /* APPROACH */
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 12px;
+        }
+
+        .step {
+            padding: 24px;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: rgba(255,255,255,.025);
+        }
+
+        .step-num {
+            font-family: "JetBrains Mono";
+            font-size: 11px;
+            color: var(--cyan);
+            margin-bottom: 26px;
+        }
+
+        .step h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        /* PROJECTS */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 18px;
+        }
+
+        .project {
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .project-top {
+            height: 180px;
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            background:
+                radial-gradient(circle at 75% 25%,rgba(37,216,223,.18),transparent 28%),
+                linear-gradient(135deg,#0a1c2d,#07111e);
+        }
+
+        .project-code {
+            font-family: "JetBrains Mono";
+            font-size: 10px;
+            color: #7ee6e1;
+        }
+
+        .project h3 {
+            font-size: 22px;
+            letter-spacing: -.03em;
+            margin-top: 8px;
+        }
+
+        .project-body {
+            padding: 23px;
+        }
+
+        .project-body p {
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 18px;
+        }
+
+        .project-link {
+            color: #8bdff4;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        /* SERVICES */
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 15px;
+        }
+
+        .service {
+            padding: 24px;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: rgba(255,255,255,.025);
+        }
+
+        .service .num {
+            font-family: "JetBrains Mono";
+            font-size: 10px;
+            color: var(--cyan);
+        }
+
+        .service h3 {
+            margin: 15px 0 8px;
+            font-size: 15px;
+        }
+
+        .service p {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        /* CONTACT */
+
+        .contact {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg,#0a1d30,#08131f);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            padding: 45px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 30px;
+            align-items: end;
+        }
+
+        .contact h2 {
+            max-width: 650px;
+        }
+
+        .contact p {
+            margin-top: 13px;
+            max-width: 650px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 210px;
+        }
+
+        .contact-links a {
+            padding: 11px 13px;
+            border: 1px solid var(--line);
+            border-radius: 11px;
+            background: rgba(255,255,255,.025);
+            font-size: 11px;
+            transition: .25s;
+        }
+
+        .contact-links a:hover {
+            border-color: rgba(37,216,223,.35);
+            transform: translateX(-3px);
+        }
+
+        footer {
+            padding: 30px 0 45px;
+            color: #61798f;
+            font-size: 10px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            border-top: 1px solid var(--line);
+            padding-top: 20px;
+        }
+
+        /* REVEAL */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:900px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu {
+                display: block;
+            }
+
+            .hero-grid,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .profile-frame {
+                max-width: 290px;
+            }
+
+            .status-card {
+                left: 0;
+            }
+
+            .scan {
+                right: 0;
+            }
+
+            .skill-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .steps {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .section-head {
+                display: block;
+            }
+
+            .section-head p {
+                margin-top: 14px;
+            }
+        }
+
+        @media(max-width:600px) {
+            .container {
+                width: min(var(--max), calc(100% - 26px));
+            }
+
+            section {
+                padding: 75px 0;
+            }
+
+            .projects,
+            .service-grid,
+            .skill-grid,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .contact {
+                padding: 28px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+            }
+
+            .footer-inner {
+                display: block;
+            }
+
+            .footer-inner span {
+                display: block;
+                margin-top: 7px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div id="progress"></div>
-
-<header>
-
-<div class="container nav">
-
-<a class="brand" href="#top">
-<b>●</b> teaima@cloud:~$
-</a>
-
 <nav>
-<a href="#about">01. About</a>
-<a href="#method">02. Approach</a>
-<a href="#projects">03. Projects</a>
-<a href="#skills">04. Skills</a>
-<a href="#contact">05. Contact</a>
+    <div class="container nav-inner">
+
+        <a href="#home" class="brand">
+            <span class="brand-mark">AT</span>
+            <span>Abdelrahman Teaima</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#approach">Approach</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact" class="nav-cta">Let's work</a>
+        </div>
+
+        <button class="menu" aria-label="Open menu">☰</button>
+    </div>
 </nav>
 
-<a class="nav-cta" href="#contact">
-Let's Connect
-</a>
-
-<button
-class="menu"
-id="menu"
-aria-label="Open navigation">
-☰
-</button>
-
-</div>
-
-<div
-id="mobile"
-style="
-display:none;
-border-top:1px solid var(--line);
-padding:14px 20px">
-
-<div
-class="container"
-style="
-display:grid;
-gap:13px;
-font:600 12px ui-monospace,monospace;
-color:var(--muted)">
-
-<a href="#about">01. About</a>
-<a href="#method">02. Approach</a>
-<a href="#projects">03. Projects</a>
-<a href="#skills">04. Skills</a>
-<a href="#contact">05. Contact</a>
 
-</div>
+<main>
 
-</div>
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="container hero-grid">
 
-</header>
+            <div>
 
-<main id="top">
+                <div class="eyebrow">
+                    <span class="dot"></span>
+                    AWS CLOUD • APPLICATION DEPLOYMENT • SECURITY
+                </div>
 
-<section class="container hero">
+                <h1>
+                    I deploy applications.<br>
+                    <span class="gradient">I secure the cloud.</span>
+                </h1>
 
-<div>
+                <p>
+                    I'm Abdelrahman Teaima — focused on AWS cloud infrastructure,
+                    web application deployment, and practical cloud security.
+                    I work with AWS services to deploy applications, configure
+                    their infrastructure, connect databases, manage access,
+                    and apply security controls.
+                </p>
 
-<div class="eyebrow">
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#projects">
+                        Explore my work →
+                    </a>
 
-<span class="dot"></span>
+                    <a class="btn btn-secondary" href="#contact">
+                        Contact me
+                    </a>
+                </div>
 
-AWS CLOUD SECURITY · COURSE GRADUATE · SECURITY FIRST
+                <div class="hero-note mono">
+                    AWS / EC2 / VPC / RDS / IAM / SG / NACL /
+                    CloudTrail / CloudWatch / GuardDuty / Linux
+                </div>
 
-</div>
+            </div>
 
-<h1>
-Abdelrahman<br>
-<span class="gradient">
-Mahmoud Teaima
-</span>
-</h1>
 
-<div class="role">
-<span id="typed"></span>
-<span style="color:var(--cyan)">_</span>
-</div>
+            <div class="hero-visual">
 
-<p>
-I don't just deploy cloud resources.
-I think about how they can be exposed,
-controlled, monitored and secured —
-with AWS security at the center of the design.
-</p>
+                <div class="profile-frame">
+                    <div class="profile-inner">
+                        <img src="abdo.png" alt="Abdelrahman Teaima">
+                    </div>
+                </div>
 
-<div class="actions">
+                <div class="status-card">
+                    <strong>Cloud & Deployment Focus</strong>
+                    <small>Deploy. Configure. Secure.</small>
+                </div>
 
-<a
-class="btn primary"
-href="#projects">
-Explore Projects ↗
-</a>
+                <div class="scan">
+                    <div class="ok">✓ Application deployed</div>
+                    <div class="ok">✓ IAM controlled</div>
+                    <div class="ok">✓ Network secured</div>
+                    <div class="ok">✓ Monitoring enabled</div>
+                </div>
 
-<a
-class="btn"
-href="cv.pdf"
-download>
-Download CV ↓
-</a>
+            </div>
 
-<a
-class="btn"
-href="https://github.com/abdelrahmanmahmo"
-target="_blank"
-rel="noopener">
-GitHub ↗
-</a>
+        </div>
+    </section>
 
-<a
-class="btn"
-href="https://www.linkedin.com/in/abdelrahman-teaima"
-target="_blank"
-rel="noopener">
-LinkedIn ↗
-</a>
 
-</div>
+    <!-- ABOUT -->
+    <section id="about">
 
-<div class="stats">
+        <div class="container">
 
-<div class="stat">
-<strong>AWS</strong>
-<span>Cloud infrastructure</span>
-</div>
+            <div class="section-head reveal">
 
-<div class="stat">
-<strong>Security</strong>
-<span>Cloud defense</span>
-</div>
+                <div>
+                    <div class="kicker">01 / Profile</div>
 
-<div class="stat">
-<strong>Security</strong>
-<span>First by design</span>
-</div>
+                    <h2>
+                        I don't just put websites online.
+                    </h2>
+                </div>
 
-</div>
+                <p>
+                    I work across the path from application deployment
+                    to the cloud infrastructure and security surrounding it.
+                </p>
 
-</div>
+            </div>
 
-<div class="visual">
 
-<div class="orbit">
+            <div class="about-grid">
 
-<div class="avatar">
+                <article class="card reveal">
 
-<img
-src="abdo.png"
-alt="Portrait of Abdelrahman Teaima">
+                    <h3>What I do</h3>
 
-<div class="badge">
-Cloud Defense · AWS
-</div>
+                    <p>
+                        I can deploy web applications on AWS, configure the
+                        required cloud resources, connect applications to
+                        databases, and manage the network and access controls
+                        around the workload.
+                    </p>
 
-</div>
+                    <div class="quote">
+                        A deployment is not just about making an application
+                        reachable — it should be configured properly and securely.
+                    </div>
 
-</div>
+                </article>
 
-</div>
 
-</section>
+                <article class="card reveal">
 
+                    <h3>My focus</h3>
 
-<section
-id="about"
-class="container reveal">
+                    <p>
+                        My work combines AWS cloud infrastructure, application
+                        hosting and cloud security — with a practical focus on
+                        EC2, VPC, RDS, IAM, Linux and AWS security controls.
+                    </p>
 
-<div class="section-head">
+                </article>
 
-<div class="kicker">
-// 01. about me
-</div>
+            </div>
 
-<h2>
-I build with security in mind.
-</h2>
+        </div>
 
-</div>
+    </section>
 
-<div class="about">
 
-<div class="panel">
+    <!-- SKILLS -->
+    <section id="skills">
 
-<h3>
-Cloud security is not an afterthought.
-</h3>
+        <div class="container">
 
-<p>
-I completed my AWS Cloud Security training
-with a clear goal: understand how to secure
-cloud environments from the network layer
-to identity, workloads and visibility.
-</p>
+            <div class="section-head reveal">
 
-<p>
-My hands-on work covers VPCs and subnets,
-EC2 and RDS, IAM, security groups, NACLs,
-CloudTrail, monitoring and Linux hardening —
-the areas where strong cloud security
-decisions actually matter.
-</p>
+                <div>
+                    <div class="kicker">02 / Technical Stack</div>
 
-</div>
+                    <h2>
+                        The stack behind the deployment.
+                    </h2>
+                </div>
 
-<div class="panel">
+                <p>
+                    Focused technologies for building, deploying and
+                    securing cloud-hosted applications.
+                </p>
 
-<div class="checks">
+            </div>
 
-<div class="check">
-<b>✓</b> VPC & Subnetting
-</div>
 
-<div class="check">
-<b>✓</b> IAM
-</div>
+            <div class="skill-grid">
 
-<div class="check">
-<b>✓</b> Security Groups
-</div>
+                <div class="skill reveal">
 
-<div class="check">
-<b>✓</b> NACLs
-</div>
+                    <div class="skill-icon">☁</div>
 
-<div class="check">
-<b>✓</b> CloudTrail
-</div>
+                    <h3>AWS Cloud</h3>
 
-<div class="check">
-<b>✓</b> Linux Hardening
-</div>
+                    <div class="tags">
+                        <span class="tag">AWS</span>
+                        <span class="tag">EC2</span>
+                        <span class="tag">VPC</span>
+                        <span class="tag">RDS</span>
+                    </div>
 
-</div>
+                </div>
 
-</div>
 
-</div>
+                <div class="skill reveal">
 
-</section>
+                    <div class="skill-icon">◉</div>
 
+                    <h3>Application Deployment</h3>
 
-<section
-id="method"
-class="container">
+                    <div class="tags">
+                        <span class="tag">Web Apps</span>
+                        <span class="tag">EC2</span>
+                        <span class="tag">Linux</span>
+                        <span class="tag">Hosting</span>
+                    </div>
 
-<div class="section-head reveal">
+                </div>
 
-<div class="kicker">
-// 02. security mindset
-</div>
 
-<h2>
-My standard: secure it before you trust it.
-</h2>
+                <div class="skill reveal">
 
-<p>
-Every layer has a responsibility —
-and every unnecessary exposure is a problem
-waiting to happen.
-</p>
+                    <div class="skill-icon">◈</div>
 
-</div>
+                    <h3>Cloud Security</h3>
 
-<div class="pillars">
+                    <div class="tags">
+                        <span class="tag">IAM</span>
+                        <span class="tag">SG</span>
+                        <span class="tag">NACL</span>
+                        <span class="tag">GuardDuty</span>
+                    </div>
 
-<article class="card reveal">
+                </div>
 
-<div class="num">
-01 / NETWORK
-</div>
 
-<h3>
-Segment first
-</h3>
+                <div class="skill reveal">
 
-<p>
-Use VPCs, subnets, route tables,
-security groups and NACLs to control
-how workloads communicate.
-</p>
+                    <div class="skill-icon">▣</div>
 
-</article>
+                    <h3>Data & Monitoring</h3>
 
+                    <div class="tags">
+                        <span class="tag">RDS</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">CloudTrail</span>
+                        <span class="tag">CloudWatch</span>
+                    </div>
 
-<article class="card reveal">
+                </div>
 
-<div class="num">
-02 / IDENTITY
-</div>
+            </div>
 
-<h3>
-Least privilege
-</h3>
+        </div>
 
-<p>
-Keep permissions scoped to the workload
-and prefer controlled roles and strong
-authentication practices.
-</p>
+    </section>
 
-</article>
 
+    <!-- APPROACH -->
+    <section id="approach">
 
-<article class="card reveal">
+        <div class="container">
 
-<div class="num">
-03 / DATA
-</div>
+            <div class="section-head reveal">
 
-<h3>
-Protect the data
-</h3>
+                <div>
+                    <div class="kicker">03 / How I Work</div>
 
-<p>
-Separate database tiers from public exposure
-and use encryption and TLS where appropriate.
-</p>
+                    <h2>
+                        From application to protected cloud environment.
+                    </h2>
+                </div>
 
-</article>
+                <p>
+                    A practical workflow that keeps deployment and
+                    security connected from the beginning.
+                </p>
 
+            </div>
 
-<article class="card reveal">
 
-<div class="num">
-04 / VISIBILITY
-</div>
+            <div class="steps">
 
-<h3>
-Log what matters
-</h3>
+                <div class="step reveal">
+                    <div class="step-num">01 — PREPARE</div>
+                    <h3>Understand the application</h3>
+                    <p>
+                        Identify the application requirements,
+                        ports, database needs and dependencies.
+                    </p>
+                </div>
 
-<p>
-Use CloudTrail, CloudWatch and security
-telemetry to make activity visible
-and actionable.
-</p>
 
-</article>
+                <div class="step reveal">
+                    <div class="step-num">02 — DEPLOY</div>
+                    <h3>Put it on AWS</h3>
+                    <p>
+                        Configure the required AWS resources,
+                        server environment and application hosting.
+                    </p>
+                </div>
 
 
-<article class="card reveal">
+                <div class="step reveal">
+                    <div class="step-num">03 — SECURE</div>
+                    <h3>Protect the environment</h3>
+                    <p>
+                        Apply IAM, Security Groups, NACLs,
+                        controlled access and security hardening.
+                    </p>
+                </div>
 
-<div class="num">
-05 / HOST
-</div>
 
-<h3>
-Harden the OS
-</h3>
+                <div class="step reveal">
+                    <div class="step-num">04 — VALIDATE</div>
+                    <h3>Test the deployment</h3>
+                    <p>
+                        Verify connectivity, access boundaries,
+                        application availability and visibility.
+                    </p>
+                </div>
 
-<p>
-Apply practical Linux hardening,
-controlled SSH access, firewall rules
-and patching discipline.
-</p>
+            </div>
 
-</article>
+        </div>
 
+    </section>
 
-<article class="card reveal">
 
-<div class="num">
-06 / RESPONSE
-</div>
+    <!-- PROJECTS -->
+    <section id="projects">
 
-<h3>
-Detect what matters
-</h3>
+        <div class="container">
 
-<p>
-Make suspicious activity visible through
-practical logging, monitoring and security
-findings instead of waiting for incidents.
-</p>
+            <div class="section-head reveal">
 
-</article>
+                <div>
+                    <div class="kicker">04 / Selected Work</div>
 
-</div>
+                    <h2>
+                        Projects that show the thinking.
+                    </h2>
+                </div>
 
-</section>
+                <p>
+                    From web applications to AWS environments,
+                    each project focuses on practical implementation.
+                </p>
 
+            </div>
 
-<section
-id="projects"
-class="container">
 
-<div class="section-head reveal">
+            <div class="projects">
 
-<div class="kicker">
-// 03. selected work
-</div>
 
-<h2>
-Proof beats promises.
-</h2>
+                <article class="card project reveal">
 
-<p>
-Hands-on projects that demonstrate how I
-approach AWS cloud security in practice.
-</p>
+                    <div class="project-top">
 
-</div>
+                        <div>
+                            <div class="project-code">
+                                01 / WEB PLATFORM
+                            </div>
 
-<div class="projects">
+                            <h3>Negatron</h3>
+                        </div>
 
-<article
-class="card project featured reveal">
+                        <span class="tag">
+                            Application
+                        </span>
 
-<div class="tagrow">
+                    </div>
 
-<span>
-FEATURED ARCHITECTURE
-</span>
 
-<span class="tag">
-AWS CLOUD
-</span>
+                    <div class="project-body">
 
-</div>
+                        <p>
+                            A web-based website design platform focused on
+                            simplifying website creation through a visual
+                            drag-and-drop workflow, with PHP/MySQL backend
+                            components.
+                        </p>
 
-<h3>
-Multi-Tier Resilient Web Architecture on AWS
-</h3>
+                        <div class="project-meta">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">MySQL</span>
+                        </div>
 
-<p>
-Designed a multi-tier AWS environment with
-an application/web tier and an isolated RDS
-MySQL data tier. The architecture emphasizes
-controlled network access, restricted database
-exposure and secure administrative access
-through a bastion-based workflow.
-</p>
+                        <a
+                            class="project-link"
+                            href="https://github.com/abdelrahmanmahmo/Portfolio"
+                            target="_blank"
+                        >
+                            GitHub ↗
+                        </a>
 
-<div class="tech">
+                    </div>
 
-<span>AWS VPC</span>
-<span>EC2</span>
-<span>RDS MySQL</span>
-<span>Security Groups</span>
-<span>IAM</span>
+                </article>
 
-</div>
 
-</article>
+                <article class="card project reveal">
 
+                    <div class="project-top">
 
-<article
-class="card project reveal">
+                        <div>
+                            <div class="project-code">
+                                02 / CLOUD DEPLOYMENT
+                            </div>
 
-<div class="tagrow">
+                            <h3>AWS Application Deployment</h3>
+                        </div>
 
-<span>
-SECOPS
-</span>
+                        <span class="tag">
+                            AWS
+                        </span>
 
-<span class="tag">
-DETECTION
-</span>
+                    </div>
 
-</div>
 
-<h3>
-Cloud Auditing & Threat Detection Pipeline
-</h3>
+                    <div class="project-body">
 
-<p>
-Explored a defensive pipeline using CloudTrail,
-GuardDuty, CloudWatch, SNS and KMS to
-centralize visibility, protect audit data
-and route security findings toward responders.
-</p>
+                        <p>
+                            Deploying web applications on AWS using cloud
+                            compute, networking and database services,
+                            while configuring the environment required
+                            for the application to run properly.
+                        </p>
 
-<div class="tech">
+                        <div class="project-meta">
+                            <span class="tag">EC2</span>
+                            <span class="tag">VPC</span>
+                            <span class="tag">RDS</span>
+                            <span class="tag">Linux</span>
+                            <span class="tag">IAM</span>
+                        </div>
 
-<span>CloudTrail</span>
-<span>GuardDuty</span>
-<span>CloudWatch</span>
-<span>SNS</span>
-<span>KMS</span>
+                        <span class="project-link">
+                            Cloud Deployment
+                        </span>
 
-</div>
+                    </div>
 
-</article>
+                </article>
 
 
-<article
-class="card project reveal">
+                <article class="card project reveal">
 
-<div class="tagrow">
+                    <div class="project-top">
 
-<span>
-APPLICATION SECURITY
-</span>
+                        <div>
+                            <div class="project-code">
+                                03 / SECURITY
+                            </div>
 
-<span class="tag">
-DEFENSE
-</span>
+                            <h3>Cloud Security Hardening</h3>
+                        </div>
 
-</div>
+                        <span class="tag">
+                            Security
+                        </span>
 
-<h3>
-Hardened Web Portal & Backend Defense
-</h3>
+                    </div>
 
-<p>
-Built a database-driven PHP/MySQL backend
-using prepared statements, input validation
-and role-based sessions, then applied Linux
-firewall and SSH hardening concepts to
-the hosting environment.
-</p>
 
-<div class="tech">
+                    <div class="project-body">
 
-<span>PHP 8</span>
-<span>PDO</span>
-<span>MySQL</span>
-<span>Linux</span>
-<span>RBAC</span>
-<span>SQLi/XSS Mitigation</span>
+                        <p>
+                            Reducing unnecessary exposure through
+                            least-privilege access, network controls,
+                            controlled database paths and security
+                            monitoring.
+                        </p>
 
-</div>
+                        <div class="project-meta">
+                            <span class="tag">IAM</span>
+                            <span class="tag">NACL</span>
+                            <span class="tag">CloudTrail</span>
+                            <span class="tag">CloudWatch</span>
+                            <span class="tag">GuardDuty</span>
+                        </div>
 
-</article>
+                        <span class="project-link">
+                            Security Focus
+                        </span>
 
-</div>
+                    </div>
 
-</section>
+                </article>
 
 
-<section
-id="skills"
-class="container">
+                <article class="card project reveal">
 
-<div class="section-head reveal">
+                    <div class="project-top">
 
-<div class="kicker">
-// 04. technical skills
-</div>
+                        <div>
+                            <div class="project-code">
+                                04 / DATABASE
+                            </div>
 
-<h2>
-Tools I work with.
-</h2>
+                            <h3>Protected RDS Architecture</h3>
+                        </div>
 
-</div>
+                        <span class="tag">
+                            Data
+                        </span>
 
-<div class="skills">
+                    </div>
 
-<div class="card reveal">
 
-<div class="num">
-CLOUD INFRASTRUCTURE
-</div>
+                    <div class="project-body">
 
-<h3>
-AWS Platform
-</h3>
+                        <p>
+                            Designing the application-to-database path
+                            so the database is not unnecessarily exposed
+                            to the public internet and access is limited
+                            to the required workload.
+                        </p>
 
-<ul class="skill-list">
+                        <div class="project-meta">
+                            <span class="tag">RDS</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">Private Access</span>
+                            <span class="tag">Security Group</span>
+                        </div>
 
-<li>VPC, Subnetting & Route Tables</li>
-<li>EC2 & Elastic IPs</li>
-<li>S3 Policies & Object Controls</li>
-<li>RDS / MySQL Architectures</li>
-<li>Internet & NAT Gateways</li>
-<li>Route 53 DNS</li>
+                        <span class="project-link">
+                            AWS Architecture
+                        </span>
 
-</ul>
+                    </div>
 
-</div>
+                </article>
 
+            </div>
 
-<div class="card reveal">
+        </div>
 
-<div class="num">
-CLOUD SECURITY
-</div>
+    </section>
 
-<h3>
-Defense & Audit
-</h3>
 
-<ul class="skill-list">
+    <!-- SERVICES -->
+    <section id="services">
 
-<li>IAM Roles & Policies</li>
-<li>Security Groups & NACLs</li>
-<li>GuardDuty Monitoring</li>
-<li>CloudTrail Logging</li>
-<li>KMS Encryption</li>
-<li>CloudWatch Metrics</li>
+        <div class="container">
 
-</ul>
+            <div class="section-head reveal">
 
-</div>
+                <div>
+                    <div class="kicker">05 / What I Can Do</div>
 
+                    <h2>
+                        Practical cloud capabilities.
+                    </h2>
+                </div>
 
-<div class="card reveal">
+                <p>
+                    Clear services without unnecessary DevOps buzzwords.
+                </p>
 
-<div class="num">
-SYSTEMS & SECURITY
-</div>
+            </div>
 
-<h3>
-Security Foundations
-</h3>
 
-<ul class="skill-list">
+            <div class="service-grid">
 
-<li>Linux Administration</li>
-<li>SSH & Firewall Hardening</li>
-<li>Bash Fundamentals</li>
-<li>Python Security Basics</li>
-<li>PHP & MySQL</li>
-<li>Web Security Fundamentals</li>
 
-</ul>
+                <div class="service reveal">
+                    <div class="num">01</div>
+                    <h3>Web Application Deployment</h3>
+                    <p>
+                        Deploy and host websites and web applications
+                        on AWS using EC2, Linux, networking and databases.
+                    </p>
+                </div>
 
-</div>
 
-</div>
+                <div class="service reveal">
+                    <div class="num">02</div>
+                    <h3>AWS Infrastructure Setup</h3>
+                    <p>
+                        Configure VPCs, subnets, routing, compute
+                        resources and required cloud components.
+                    </p>
+                </div>
 
-</section>
 
+                <div class="service reveal">
+                    <div class="num">03</div>
+                    <h3>Cloud Security</h3>
+                    <p>
+                        Apply IAM, network controls, least-privilege
+                        access and practical security hardening.
+                    </p>
+                </div>
 
-<section
-class="container"
-id="education">
 
-<div class="credentials">
+                <div class="service reveal">
+                    <div class="num">04</div>
+                    <h3>EC2 & Linux</h3>
+                    <p>
+                        Configure cloud-hosted servers and prepare
+                        environments for web application deployment.
+                    </p>
+                </div>
 
-<div class="card credential reveal">
 
-<small>
-// EDUCATION
-</small>
+                <div class="service reveal">
+                    <div class="num">05</div>
+                    <h3>RDS & Database Connectivity</h3>
+                    <p>
+                        Connect applications with managed databases
+                        while controlling network access.
+                    </p>
+                </div>
 
-<h3>
-B.Sc. in Information Technology
-</h3>
 
-<p>
-Sinai University · Expected Graduation: 2027
-</p>
+                <div class="service reveal">
+                    <div class="num">06</div>
+                    <h3>Security Monitoring</h3>
+                    <p>
+                        Use CloudTrail, CloudWatch and GuardDuty
+                        to improve visibility into cloud activity.
+                    </p>
+                </div>
 
-<p style="margin-top:10px">
-Foundations across networks, operating systems,
-databases, information security and algorithms.
-</p>
+            </div>
 
-</div>
+        </div>
 
+    </section>
 
-<div class="card credential reveal">
 
-<small>
-// TRAINING
-</small>
+    <!-- CONTACT -->
+    <section id="contact">
 
-<h3>
-AWS Cloud Security Course
-</h3>
+        <div class="container">
 
-<p>
-Completed · Hands-on AWS cloud security training
-</p>
+            <div class="contact reveal">
 
-<p style="margin-top:10px">
-Practical work across cloud networking,
-IAM, monitoring, Linux security and
-defensive AWS services.
-</p>
+                <div class="contact-grid">
 
-</div>
+                    <div>
 
-</div>
+                        <div class="kicker">
+                            06 / Contact
+                        </div>
 
-</section>
+                        <h2>
+                            Have a web application?
+                            Let's get it running securely on AWS.
+                        </h2>
 
+                        <p>
+                            For cloud projects, application deployment,
+                            AWS infrastructure or security-focused work,
+                            feel free to reach out.
+                        </p>
 
-<section
-id="contact"
-class="container contact reveal">
+                    </div>
 
-<div class="panel">
 
-<div class="kicker">
-// 05. let's connect
-</div>
+                    <div class="contact-links">
 
-<h2>
-Building cloud systems is only half the job.
-<span class="gradient">
-Building them securely is the goal.
-</span>
-</h2>
+                        <a
+                            href="https://github.com/abdelrahmanmahmo"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            GitHub ↗
+                        </a>
 
-<p>
-Recently completed AWS Cloud Security training
-and ready to bring a security-first mindset
-to a junior Cloud Security role.
-</p>
+                        <a
+                            href="https://www.linkedin.com/in/abdelrahman-teaima/"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            LinkedIn ↗
+                        </a>
 
-<div class="actions">
+                        <a href="mailto:tymt547@gmail.com">
+                            tymt547@gmail.com ↗
+                        </a>
 
-<a
-class="btn primary"
-href="mailto:tymt547@gmail.com">
-Email Me ↗
-</a>
+                        <a
+                            href="cv.pdf"
+                            target="_blank"
+                        >
+                            View CV ↗
+                        </a>
 
-<a
-class="btn"
-href="https://www.linkedin.com/in/abdelrahman-teaima"
-target="_blank"
-rel="noopener">
-LinkedIn ↗
-</a>
+                    </div>
 
-<a
-class="btn"
-href="https://github.com/abdelrahmanmahmo"
-target="_blank"
-rel="noopener">
-GitHub ↗
-</a>
+                </div>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-</section>
+    </section>
 
 </main>
 
 
 <footer>
 
-© 2026 Abdelrahman Mahmoud Teaima · Cloud Security Portfolio
+    <div class="container footer-inner">
+
+        <span>
+            © 2026 Abdelrahman Teaima. All rights reserved.
+        </span>
+
+        <span class="mono">
+            AWS CLOUD / APPLICATION DEPLOYMENT / SECURITY
+        </span>
+
+    </div>
 
 </footer>
 
 
 <script>
 
-const roles = [
-  "AWS Cloud Security Graduate",
-  "Cloud Security Specialist",
-  "AWS Security-Focused Engineer"
-];
+    const menu = document.querySelector(".menu");
+    const navLinks = document.querySelector(".nav-links");
 
-let ri = 0;
-let ci = 0;
-let deleting = false;
+    menu.addEventListener("click", () => {
 
-const typed =
-document.getElementById("typed");
+        const open = navLinks.style.display === "flex";
 
-function type(){
+        navLinks.style.display = open ? "" : "flex";
 
-  const word = roles[ri];
+        if (!open) {
 
-  ci += deleting ? -1 : 1;
-
-  typed.textContent =
-    word.slice(0,ci);
-
-  let wait =
-    deleting ? 32 : 62;
-
-  if(
-    !deleting &&
-    ci === word.length
-  ){
-    deleting = true;
-    wait = 1500;
-  }
-
-  else if(
-    deleting &&
-    ci === 0
-  ){
-    deleting = false;
-    ri = (ri + 1) % roles.length;
-    wait = 300;
-  }
-
-  setTimeout(type,wait);
-}
-
-type();
-
-
-const observer =
-new IntersectionObserver(
-  entries => {
-
-    entries.forEach(e => {
-
-      if(e.isIntersecting){
-
-        e.target.classList.add("show");
-
-        observer.unobserve(e.target);
-
-      }
-
+            navLinks.style.position = "absolute";
+            navLinks.style.top = "74px";
+            navLinks.style.left = "13px";
+            navLinks.style.right = "13px";
+            navLinks.style.flexDirection = "column";
+            navLinks.style.alignItems = "stretch";
+            navLinks.style.padding = "14px";
+            navLinks.style.background = "rgba(5,11,19,.97)";
+            navLinks.style.border = "1px solid rgba(255,255,255,.08)";
+            navLinks.style.borderRadius = "16px";
+        }
     });
 
-  },
-  {
-    threshold:.12
-  }
-);
 
-document
-.querySelectorAll(".reveal")
-.forEach(x => observer.observe(x));
+    const observer = new IntersectionObserver(
+        (entries) => {
 
+            entries.forEach(entry => {
 
-const progress =
-document.getElementById("progress");
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                }
 
-addEventListener(
-  "scroll",
-  () => {
+            });
 
-    const d =
-      document.documentElement;
-
-    progress.style.width =
-      (
-        d.scrollTop /
-        (d.scrollHeight - d.clientHeight) *
-        100
-      ) + "%";
-
-  },
-  {
-    passive:true
-  }
-);
+        },
+        { threshold: .08 }
+    );
 
 
-const menu =
-document.getElementById("menu");
-
-const mobile =
-document.getElementById("mobile");
-
-menu.onclick = () => {
-
-  mobile.style.display =
-    mobile.style.display === "none"
-      ? "block"
-      : "none";
-
-};
-
-mobile
-.querySelectorAll("a")
-.forEach(a => {
-
-  a.onclick = () => {
-
-    mobile.style.display =
-      "none";
-
-  };
-
-});
+    document
+        .querySelectorAll(".reveal")
+        .forEach(el => observer.observe(el));
 
 </script>
 
 </body>
 </html>
-```
