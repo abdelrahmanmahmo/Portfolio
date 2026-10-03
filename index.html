@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Abdelrahman Teaima | Cloud Security</title>
-<meta name="description" content="Portfolio of Abdelrahman Mahmoud Teaima: Cloud Security Engineer & AWS Infrastructure Hardening." />
+<title>Abdelrahman Teaima | Cloud Security Engineer</title>
+<meta name="description" content="Portfolio of Abdelrahman Mahmoud Teaima: AWS Cloud Security, Zero Trust Architecture & Infrastructure Hardening." />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>" />
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,46 +37,56 @@
 
 <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#050811]/70 border-b border-slate-800/80">
   <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="#top" class="text-sm font-bold font-mono tracking-wider text-cyan-400">teaima@cloud:~$</a>
+    <a href="#top" class="text-sm font-bold font-mono tracking-wider text-cyan-400 flex items-center gap-1.5">
+      <span class="text-emerald-400">●</span> teaima@cloud:~$
+    </a>
     <nav class="hidden md:flex gap-8 text-xs font-mono text-slate-400">
-      <a href="#about" class="hover:text-cyan-400 transition">About</a>
-      <a href="#how" class="hover:text-cyan-400 transition">How I secure</a>
-      <a href="#projects" class="hover:text-cyan-400 transition">Projects</a>
-      <a href="#skills" class="hover:text-cyan-400 transition">Skills</a>
-      <a href="#education" class="hover:text-cyan-400 transition">Education</a>
+      <a href="#about" class="hover:text-cyan-400 transition">01. About</a>
+      <a href="#how" class="hover:text-cyan-400 transition">02. Security Architecture</a>
+      <a href="#projects" class="hover:text-cyan-400 transition">03. Projects</a>
+      <a href="#skills" class="hover:text-cyan-400 transition">04. Skills</a>
+      <a href="#education" class="hover:text-cyan-400 transition">05. Certs & Education</a>
     </nav>
     <div class="flex items-center gap-2">
-      <a href="#contact" class="hidden sm:inline-block px-3.5 py-1.5 text-xs font-mono font-semibold rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500 hover:text-black transition">Contact me</a>
+      <a href="#contact" class="hidden sm:inline-block px-3.5 py-1.5 text-xs font-mono font-semibold rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500 hover:text-black transition">Let's Connect</a>
       <button id="menuBtn" aria-label="Open menu" class="md:hidden w-9 h-9 grid place-items-center rounded-md border border-slate-700 text-slate-300">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
   </div>
   <nav id="mobileNav" class="hidden md:hidden border-t border-slate-800 px-6 py-3 flex flex-col gap-3 text-sm font-mono text-slate-300">
-    <a href="#about">About</a><a href="#how">How I secure</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a>
+    <a href="#about">01. About</a>
+    <a href="#how">02. Security Architecture</a>
+    <a href="#projects">03. Projects</a>
+    <a href="#skills">04. Skills</a>
+    <a href="#education">05. Certs & Education</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<!-- Hero -->
-<section id="top" class="max-w-6xl mx-auto px-6 pt-16 pb-12">
+<!-- Hero Section -->
+<section id="top" class="max-w-6xl mx-auto px-6 pt-20 pb-16">
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
     <div class="lg:col-span-7 order-2 lg:order-1">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 mb-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-cyan-950/50 border border-cyan-500/40 text-cyan-300 mb-6 shadow-sm">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-        AWS Certified | Open to junior roles
+        AWS Certified · Open to Junior Cloud Security Roles
       </div>
       <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4 text-white leading-tight">
         Abdelrahman <br class="hidden sm:block" />
         <span class="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">Mahmoud Teaima</span>
       </h1>
-      <p class="text-lg sm:text-xl font-mono text-cyan-400/90 mb-4 h-8"><span id="typed" class="caret"></span></p>
-      <p class="text-slate-400 text-sm sm:text-base max-w-xl leading-relaxed mb-8">
-        I design, deploy, and harden secure cloud infrastructure on AWS: strict network segmentation, least-privilege access control, centralized auditing, and automated threat monitoring.
+      <p class="text-lg sm:text-xl font-mono text-cyan-400/90 mb-5 h-8"><span id="typed" class="caret"></span></p>
+      <p class="text-slate-300 text-sm sm:text-base max-w-xl leading-relaxed mb-8">
+        I architect resilient, hardened AWS environments. Bridging cloud infrastructure and threat defense through isolated networks, least-privilege access, automated auditing, and continuous incident monitoring.
       </p>
       <div class="flex flex-wrap items-center gap-3 text-xs font-mono">
-        <a href="#projects" class="px-5 py-3 rounded-lg bg-cyan-500 text-black font-bold hover:bg-cyan-400 transition shadow-lg shadow-cyan-500/20">View my projects</a>
-        <a href="#contact" class="px-5 py-3 rounded-lg bg-slate-900/80 border border-slate-700 hover:border-cyan-400/50 text-slate-200 transition">Get in touch</a>
-        <a href="Abdelrahman_Mahmoud_CV .pdf" download class="px-5 py-3 rounded-lg border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-slate-700 transition">Download CV</a>
+        <a href="#projects" class="px-5 py-3 rounded-lg bg-cyan-500 text-black font-bold hover:bg-cyan-400 transition shadow-lg shadow-cyan-500/20">Explore Projects</a>
+        <a href="#contact" class="px-5 py-3 rounded-lg bg-slate-900/90 border border-slate-700 hover:border-cyan-400/60 text-slate-200 transition">Get in Touch</a>
+        <a href="cv.pdf" download class="px-5 py-3 rounded-lg border border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-slate-700 transition flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Download CV
+        </a>
       </div>
     </div>
 
@@ -84,163 +94,194 @@
       <div class="relative w-64 h-64 sm:w-80 sm:h-80">
         <div class="absolute inset-0 rounded-full ring blur-[2px] opacity-80"></div>
         <div class="absolute inset-[5px] rounded-full bg-[#050811]"></div>
-        <!-- Static Profile Image Container -->
+        <!-- Static Image Component -->
         <div class="absolute inset-[12px] rounded-full overflow-hidden bg-gradient-to-br from-slate-900 to-cyan-950 border border-cyan-500/30">
-          <img id="photo" src="abdo.png" alt="Portrait of Abdelrahman Teaima" class="w-full h-full object-cover brightness-105 contrast-105" onerror="this.style.display='none';document.getElementById('ph').style.display='flex'" />
+          <img id="photo" src="photo.jpg" alt="Portrait of Abdelrahman Teaima" class="w-full h-full object-cover brightness-105 contrast-105" onerror="this.style.display='none';document.getElementById('ph').style.display='flex'" />
           <div id="ph" class="hidden w-full h-full flex-col items-center justify-center text-cyan-400 font-mono text-center">
             <span class="text-6xl font-extrabold">AT</span>
           </div>
         </div>
-        <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#090d16] border border-cyan-500/40 text-[11px] font-mono text-cyan-300 whitespace-nowrap">Cloud Security · AWS</div>
+        <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-[#090d16] border border-cyan-500/50 text-[11px] font-mono text-cyan-300 whitespace-nowrap shadow-md">Cloud Defense · AWS</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- About -->
+<!-- About Section -->
 <section id="about" class="max-w-6xl mx-auto px-6 py-16 reveal">
-  <div class="border border-slate-800/80 bg-[#090e1a]/60 rounded-2xl p-8 backdrop-blur-md grid md:grid-cols-5 gap-8">
+  <div class="border border-slate-800/80 bg-[#090e1a]/60 rounded-2xl p-8 sm:p-10 backdrop-blur-md grid md:grid-cols-5 gap-8">
     <div class="md:col-span-3">
-      <p class="text-cyan-400 font-mono text-xs mb-2">// about</p>
-      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6">Security built in from the start</h2>
+      <p class="text-cyan-400 font-mono text-xs mb-2">// 01. about me</p>
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6">Security built in by design, not bolted on.</h2>
       <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
-        Specializing in cloud infrastructure security and workload defense. I deploy applications on AWS and architect environments where only authorized, strictly verified traffic is allowed.
+        Deploying to the cloud is straightforward; securing it against real-world exposure requires calculated discipline. I focus on engineering AWS environments where Zero Trust isn’t just a buzzword—it is enforced through code, network boundaries, and granular identity policies.
       </p>
       <p class="text-slate-400 text-sm leading-relaxed">
-        I apply the <strong>Principle of Least Privilege</strong> to access and network rules, and I maintain tamper-proof audit trails so all activity can be reviewed and anomalies detected in real-time.
+        From isolating databases away from internet gateways to automating tamper-proof audit trails, my objective is always the same: eliminating attack vectors before they can be exploited.
       </p>
     </div>
     <div class="md:col-span-2 grid grid-cols-2 gap-3 text-xs font-mono text-slate-300 content-start">
-      <div class="bg-slate-900/60 p-3 rounded border border-slate-800"><span class="text-cyan-400">✔</span> AWS VPC & IAM</div>
-      <div class="bg-slate-900/60 p-3 rounded border border-slate-800"><span class="text-cyan-400">✔</span> Security Groups & NACLs</div>
-      <div class="bg-slate-900/60 p-3 rounded border border-slate-800"><span class="text-cyan-400">✔</span> CloudTrail & GuardDuty</div>
-      <div class="bg-slate-900/60 p-3 rounded border border-slate-800"><span class="text-cyan-400">✔</span> Linux / CLI Admin</div>
-      <div class="bg-slate-900/60 p-3 rounded border border-slate-800"><span class="text-cyan-400">✔</span> Terraform (IaC)</div>
-      <div class="bg-slate-900/60 p-3 rounded border border-slate-800"><span class="text-cyan-400">✔</span> Python & Bash</div>
+      <div class="bg-slate-900/60 p-3.5 rounded-lg border border-slate-800"><span class="text-cyan-400 font-bold">✔</span> VPC & Subnetting</div>
+      <div class="bg-slate-900/60 p-3.5 rounded-lg border border-slate-800"><span class="text-cyan-400 font-bold">✔</span> IAM Least Privilege</div>
+      <div class="bg-slate-900/60 p-3.5 rounded-lg border border-slate-800"><span class="text-cyan-400 font-bold">✔</span> GuardDuty & Trail</div>
+      <div class="bg-slate-900/60 p-3.5 rounded-lg border border-slate-800"><span class="text-cyan-400 font-bold">✔</span> Linux Hardening</div>
+      <div class="bg-slate-900/60 p-3.5 rounded-lg border border-slate-800"><span class="text-cyan-400 font-bold">✔</span> Terraform (IaC)</div>
+      <div class="bg-slate-900/60 p-3.5 rounded-lg border border-slate-800"><span class="text-cyan-400 font-bold">✔</span> Python & Bash</div>
     </div>
   </div>
 </section>
 
-<!-- How I secure -->
+<!-- How I Secure (Architecture Framework) -->
 <section id="how" class="max-w-6xl mx-auto px-6 py-16">
   <div class="reveal">
-    <p class="text-cyan-400 font-mono text-xs mb-2">// approach</p>
-    <h2 class="text-3xl font-bold text-white mb-10">How I secure a website on AWS</h2>
+    <p class="text-cyan-400 font-mono text-xs mb-2">// 02. methodology</p>
+    <h2 class="text-3xl font-bold text-white mb-3">Cloud Defense Blueprint</h2>
+    <p class="text-sm text-slate-400 mb-10 max-w-2xl">The six pillars I apply across every AWS architecture to guarantee depth in defense.</p>
   </div>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    <div class="card reveal border border-slate-800 rounded-xl p-5"><div class="text-cyan-400 font-mono text-xs mb-2">Network</div><h3 class="font-bold text-white mb-1">Isolated VPC</h3><p class="text-sm text-slate-400">Public and private subnets, so only the web tier faces the internet.</p></div>
-    <div class="card reveal border border-slate-800 rounded-xl p-5"><div class="text-cyan-400 font-mono text-xs mb-2">Firewall</div><h3 class="font-bold text-white mb-1">Tight security groups</h3><p class="text-sm text-slate-400">Only ports 80/443 are public. SSH is limited to trusted IPs.</p></div>
-    <div class="card reveal border border-slate-800 rounded-xl p-5"><div class="text-cyan-400 font-mono text-xs mb-2">Access</div><h3 class="font-bold text-white mb-1">Least-privilege IAM</h3><p class="text-sm text-slate-400">Scoped roles and policies, MFA on accounts, no shared root use.</p></div>
-    <div class="card reveal border border-slate-800 rounded-xl p-5"><div class="text-cyan-400 font-mono text-xs mb-2">Data</div><h3 class="font-bold text-white mb-1">HTTPS everywhere</h3><p class="text-sm text-slate-400">Encrypted traffic with a TLS certificate on the site.</p></div>
-    <div class="card reveal border border-slate-800 rounded-xl p-5"><div class="text-cyan-400 font-mono text-xs mb-2">Visibility</div><h3 class="font-bold text-white mb-1">Logging & monitoring</h3><p class="text-sm text-slate-400">CloudTrail records account activity, GuardDuty flags suspicious behavior.</p></div>
-    <div class="card reveal border border-slate-800 rounded-xl p-5"><div class="text-cyan-400 font-mono text-xs mb-2">Hosts</div><h3 class="font-bold text-white mb-1">Hardened Linux server</h3><p class="text-sm text-slate-400">Updated packages, minimal services, key-based SSH login.</p></div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="card reveal border border-slate-800 rounded-xl p-5">
+      <div class="text-cyan-400 font-mono text-xs mb-2">01 / PERIMETER</div>
+      <h3 class="font-bold text-white mb-2">VPC Network Isolation</h3>
+      <p class="text-sm text-slate-400 leading-relaxed">Multi-tier segmentation. Workloads stay strictly in private subnets with controlled egress via NAT.</p>
+    </div>
+    <div class="card reveal border border-slate-800 rounded-xl p-5">
+      <div class="text-cyan-400 font-mono text-xs mb-2">02 / FIREWALL</div>
+      <h3 class="font-bold text-white mb-2">Micro-Segmentation</h3>
+      <p class="text-sm text-slate-400 leading-relaxed">Stateful Security Groups and stateless NACLs allowing only exact port traffic (80/443). Zero default access.</p>
+    </div>
+    <div class="card reveal border border-slate-800 rounded-xl p-5">
+      <div class="text-cyan-400 font-mono text-xs mb-2">03 / IDENTITY</div>
+      <h3 class="font-bold text-white mb-2">Least-Privilege IAM</h3>
+      <p class="text-sm text-slate-400 leading-relaxed">Scoped policies, short-lived STS role assumption, compulsory MFA, and permanent retirement of root credentials.</p>
+    </div>
+    <div class="card reveal border border-slate-800 rounded-xl p-5">
+      <div class="text-cyan-400 font-mono text-xs mb-2">04 / ENCRYPTION</div>
+      <h3 class="font-bold text-white mb-2">Data Protection (KMS & TLS)</h3>
+      <p class="text-sm text-slate-400 leading-relaxed">End-to-end HTTPS for in-transit data and AWS KMS-managed customer keys for at-rest storage and databases.</p>
+    </div>
+    <div class="card reveal border border-slate-800 rounded-xl p-5">
+      <div class="text-cyan-400 font-mono text-xs mb-2">05 / TELEMETRY</div>
+      <h3 class="font-bold text-white mb-2">Active Threat Detection</h3>
+      <p class="text-sm text-slate-400 leading-relaxed">Multi-region CloudTrail combined with GuardDuty ML models analyzing DNS, VPC Flow, and API events 24/7.</p>
+    </div>
+    <div class="card reveal border border-slate-800 rounded-xl p-5">
+      <div class="text-cyan-400 font-mono text-xs mb-2">06 / COMPLIANCE</div>
+      <h3 class="font-bold text-white mb-2">Host & OS Hardening</h3>
+      <p class="text-sm text-slate-400 leading-relaxed">Clean Linux baselines, automated patch cycles, SSH keys only through Bastion tunneling, and disabled root SSH.</p>
+    </div>
   </div>
 </section>
 
-<!-- Projects -->
+<!-- Projects Section -->
 <section id="projects" class="max-w-6xl mx-auto px-6 py-16">
   <div class="reveal">
-    <p class="text-cyan-400 font-mono text-xs mb-2">// cloud security projects</p>
-    <h2 class="text-3xl font-bold text-white mb-3">Featured Projects & Architectures</h2>
-    <p class="text-sm text-slate-400 mb-10 max-w-2xl">Practical cloud infrastructure and security deployments engineered for isolation, compliance, and defense.</p>
+    <p class="text-cyan-400 font-mono text-xs mb-2">// 03. engineering projects</p>
+    <h2 class="text-3xl font-bold text-white mb-3">Architected & Secured Solutions</h2>
+    <p class="text-sm text-slate-400 mb-10 max-w-2xl">Production-minded infrastructure projects designed to survive real-world threats.</p>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-    <!-- Project 1 -->
-    <article class="card reveal md:col-span-2 border border-slate-800 rounded-xl p-6">
+    <!-- Project 1 (Featured) -->
+    <article class="card reveal md:col-span-2 border border-slate-800 rounded-xl p-7">
       <div class="flex items-center justify-between text-xs font-mono text-emerald-400 mb-3">
-        <span>Featured Architecture · AWS</span>
-        <span>INFRASTRUCTURE</span>
+        <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> FEATURED ARCHITECTURE</span>
+        <span class="border border-emerald-500/30 px-2 py-0.5 rounded bg-emerald-950/40">AWS CLOUD</span>
       </div>
-      <h3 class="text-xl font-bold text-white mb-2">Secure Multi-Tier Web Architecture on AWS</h3>
-      <p class="text-xs font-mono text-cyan-400 mb-4">VPC · EC2 · RDS MySQL · Security Groups · Bastion Host · IAM</p>
-      <p class="text-sm text-slate-300 leading-relaxed mb-5 max-w-3xl">
-        Architected and provisioned an isolated multi-tier cloud infrastructure. Configured strict public/private CIDR subnetting where EC2 web servers operate behind hardened security groups, while RDS MySQL database instances reside completely isolated in private subnets with no internet access. Enforced secure administrative access using Bastion host tunneling and scoped IAM roles.
+      <h3 class="text-2xl font-bold text-white mb-2">Multi-Tier Resilient Web Architecture on AWS</h3>
+      <p class="text-xs font-mono text-cyan-400 mb-4">AWS VPC · EC2 Tier · RDS MySQL · Security Groups · Bastion Tunnel · IAM</p>
+      <p class="text-sm text-slate-300 leading-relaxed mb-6 max-w-3xl">
+        Architected and deployed a multi-tier cloud environment engineered for zero direct database exposure. Web servers live inside hardened public subnets behind restrictive security groups, while RDS MySQL instances remain completely isolated in private data subnets without internet gateways. Provisioned secure administrative access via Bastion host tunneling and strict IAM service roles.
       </p>
       <div class="flex flex-wrap gap-2 text-[11px] font-mono text-slate-400">
-        <span class="bg-slate-800/80 px-2 py-1 rounded border border-slate-700">Terraform</span>
-        <span class="bg-slate-800/80 px-2 py-1 rounded border border-slate-700">AWS VPC</span>
-        <span class="bg-slate-800/80 px-2 py-1 rounded border border-slate-700">RDS MySQL</span>
-        <span class="bg-slate-800/80 px-2 py-1 rounded border border-slate-700">Security Groups</span>
-        <span class="bg-slate-800/80 px-2 py-1 rounded border border-slate-700">IAM Policies</span>
+        <span class="bg-slate-800/90 px-2.5 py-1 rounded border border-slate-700">Terraform</span>
+        <span class="bg-slate-800/90 px-2.5 py-1 rounded border border-slate-700">AWS VPC</span>
+        <span class="bg-slate-800/90 px-2.5 py-1 rounded border border-slate-700">RDS Multi-Subnet</span>
+        <span class="bg-slate-800/90 px-2.5 py-1 rounded border border-slate-700">Security Groups</span>
+        <span class="bg-slate-800/90 px-2.5 py-1 rounded border border-slate-700">IAM Scoped Roles</span>
       </div>
     </article>
 
     <!-- Project 2 -->
     <article class="card reveal border border-slate-800 rounded-xl p-6">
       <div class="flex items-center justify-between text-xs font-mono text-cyan-400 mb-3">
-        <span>Threat Detection & SIEM</span>
-        <span>SECOPS</span>
+        <span>INCIDENT DETECTION & SIEM</span>
+        <span class="border border-cyan-500/30 px-2 py-0.5 rounded bg-cyan-950/40">SECOPS</span>
       </div>
       <h3 class="text-xl font-bold text-white mb-2">Cloud Auditing & Threat Detection Pipeline</h3>
       <p class="text-xs font-mono text-cyan-400 mb-4">CloudTrail · GuardDuty · CloudWatch · SNS · KMS</p>
-      <p class="text-sm text-slate-300 leading-relaxed mb-5">
-        Configured multi-region AWS CloudTrail trails streaming immutable audit logs into an encrypted S3 bucket protected with KMS key policies. Enabled Amazon GuardDuty to monitor VPC Flow Logs and DNS traffic for anomalies, hooking findings into CloudWatch alarms and Amazon SNS for instant security notifications.
+      <p class="text-sm text-slate-300 leading-relaxed mb-6">
+        Streamed tamper-proof multi-region AWS CloudTrail logs into an encrypted S3 bucket guarded by KMS keys. Deployed Amazon GuardDuty to monitor VPC Flow Logs and anomalous DNS queries, routing severity findings to CloudWatch and triggering automated SNS alerts directly to security responders.
       </p>
       <div class="flex flex-wrap gap-2 text-[11px] font-mono text-slate-400">
-        <span class="bg-slate-800/80 px-2 py-1 rounded border border-slate-700">CloudTrail</span>
-        <span class="bg-slate-800/80 px-2 py-1 rounded border border-slate-700">GuardDuty</span>
-        <span class="bg-slate-800/80 px-2 py-1 rounded border border-slate-700">KMS Encryption</span>
-        <span class="bg-slate-800/80 px-2 py-1 rounded border border-slate-700">Amazon SNS</span>
+        <span class="bg-slate-800/90 px-2.5 py-1 rounded border border-slate-700">CloudTrail</span>
+        <span class="bg-slate-800/90 px-2.5 py-1 rounded border border-slate-700">GuardDuty</span>
+        <span class="bg-slate-800/90 px-2.5 py-1 rounded border border-slate-700">KMS Encryption</span>
+        <span class="bg-slate-800/90 px-2.5 py-1 rounded border border-slate-700">SNS Alerting</span>
       </div>
     </article>
 
     <!-- Project 3 -->
     <article class="card reveal border border-slate-800 rounded-xl p-6">
       <div class="flex items-center justify-between text-xs font-mono text-cyan-400 mb-3">
-        <span>Application & Server Hardening</span>
-        <span>DEFENSE</span>
+        <span>APPLICATION & HOST HARDENING</span>
+        <span class="border border-cyan-500/30 px-2 py-0.5 rounded bg-cyan-950/40">DEFENSE</span>
       </div>
       <h3 class="text-xl font-bold text-white mb-2">Hardened Web Portal & Backend Defense</h3>
-      <p class="text-xs font-mono text-cyan-400 mb-4">PHP · MySQL · Linux · RBAC · SQLi/XSS Prevention</p>
-      <p class="text-sm text-slate-300 leading-relaxed mb-5">
-        Developed a custom web backend engineered with parameterized SQL statements and input sanitization to eliminate SQL injection and XSS vulnerabilities. Implemented role-based session management and deployed the application on a hardened Linux server running key-based SSH and restrictive firewall rules.
+      <p class="text-xs font-mono text-cyan-400 mb-4">PHP 8 · MySQL · Linux · RBAC · SQLi/XSS Prevention</p>
+      <p class="text-sm text-slate-300 leading-relaxed mb-6">
+        Engineered a database-driven backend employing prepared statements and input sanitization to eliminate SQL injection and XSS vectors. Implemented role-based session tokens and hosted the entire system on a hardened Linux instance configured with UFW firewall rules and SSH keys.
       </p>
       <div class="flex flex-wrap gap-2 text-[11px] font-mono text-slate-400">
-        <span class="bg-slate-800/80 px-2 py-1 rounded border border-slate-700">PHP 8</span>
-        <span class="bg-slate-800/80 px-2 py-1 rounded border border-slate-700">MySQL</span>
-        <span class="bg-slate-800/80 px-2 py-1 rounded border border-slate-700">Linux Hardening</span>
-        <span class="bg-slate-800/80 px-2 py-1 rounded border border-slate-700">App Security</span>
+        <span class="bg-slate-800/90 px-2.5 py-1 rounded border border-slate-700">PHP & PDO</span>
+        <span class="bg-slate-800/90 px-2.5 py-1 rounded border border-slate-700">MySQL Defense</span>
+        <span class="bg-slate-800/90 px-2.5 py-1 rounded border border-slate-700">Linux Hardening</span>
+        <span class="bg-slate-800/90 px-2.5 py-1 rounded border border-slate-700">AppSec</span>
       </div>
     </article>
   </div>
 </section>
 
-<!-- Skills -->
+<!-- Skills Section -->
 <section id="skills" class="max-w-6xl mx-auto px-6 py-16">
   <div class="reveal">
-    <p class="text-cyan-400 font-mono text-xs mb-2">// skills</p>
-    <h2 class="text-3xl font-bold text-white mb-10">Technical skills</h2>
+    <p class="text-cyan-400 font-mono text-xs mb-2">// 04. technical competencies</p>
+    <h2 class="text-3xl font-bold text-white mb-10">Arsenal & Capabilities</h2>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div class="card reveal border border-slate-800 rounded-xl p-5">
-      <div class="text-xs font-mono text-cyan-400 mb-2">Cloud Platform</div><h3 class="text-base font-bold text-white mb-3">AWS Infrastructure</h3>
-      <ul class="text-xs font-mono text-slate-400 space-y-2">
+    <div class="card reveal border border-slate-800 rounded-xl p-6">
+      <div class="text-xs font-mono text-cyan-400 mb-2">Cloud Infrastructure</div>
+      <h3 class="text-lg font-bold text-white mb-4">AWS Platform</h3>
+      <ul class="text-xs font-mono text-slate-400 space-y-2.5">
         <li>• VPC, Subnetting & Route Tables</li>
-        <li>• EC2 Instances & S3 Security</li>
-        <li>• RDS (MySQL Architecture)</li>
+        <li>• EC2 Instances & Elastic IPs</li>
+        <li>• S3 Bucket Policies & Object Locks</li>
+        <li>• RDS (MySQL Architectures)</li>
         <li>• Internet & NAT Gateways</li>
-        <li>• Route 53 & DNS Management</li>
+        <li>• Route 53 DNS Routing</li>
       </ul>
     </div>
-    <div class="card reveal border border-slate-800 rounded-xl p-5">
-      <div class="text-xs font-mono text-cyan-400 mb-2">Cloud Defense</div><h3 class="text-base font-bold text-white mb-3">Security & Auditing</h3>
-      <ul class="text-xs font-mono text-slate-400 space-y-2">
-        <li>• IAM Governance & Least Privilege</li>
-        <li>• Security Groups & NACLs</li>
-        <li>• GuardDuty & CloudTrail Logging</li>
-        <li>• AWS KMS & Secrets Basics</li>
+    <div class="card reveal border border-slate-800 rounded-xl p-6">
+      <div class="text-xs font-mono text-cyan-400 mb-2">Infrastructure Security</div>
+      <h3 class="text-lg font-bold text-white mb-4">Cloud Defense & Audit</h3>
+      <ul class="text-xs font-mono text-slate-400 space-y-2.5">
+        <li>• IAM Roles, Policies & Boundaries</li>
+        <li>• Security Groups & Network ACLs</li>
+        <li>• GuardDuty ML Threat Monitoring</li>
+        <li>• Multi-Region CloudTrail Logging</li>
+        <li>• AWS KMS Encryption at Rest</li>
         <li>• CloudWatch Alarms & Metrics</li>
       </ul>
     </div>
-    <div class="card reveal border border-slate-800 rounded-xl p-5">
-      <div class="text-xs font-mono text-cyan-400 mb-2">Systems & Code</div><h3 class="text-base font-bold text-white mb-3">Automation & Dev</h3>
-      <ul class="text-xs font-mono text-slate-400 space-y-2">
+    <div class="card reveal border border-slate-800 rounded-xl p-6">
+      <div class="text-xs font-mono text-cyan-400 mb-2">Systems & Development</div>
+      <h3 class="text-lg font-bold text-white mb-4">Code & Systems</h3>
+      <ul class="text-xs font-mono text-slate-400 space-y-2.5">
         <li>• Terraform (IaC Provisioning)</li>
         <li>• Linux Admin (Ubuntu / Debian)</li>
-        <li>• Python & Bash Scripting</li>
+        <li>• Bash Scripting & Task Automation</li>
+        <li>• Python (Scripting & Boto3 Basics)</li>
         <li>• PHP & MySQL Relational DBs</li>
-        <li>• Web Security (SQLi/XSS Prevention)</li>
+        <li>• Web Defense (SQLi / XSS Mitigation)</li>
       </ul>
     </div>
   </div>
@@ -249,65 +290,83 @@
 <!-- Education & Certifications -->
 <section id="education" class="max-w-6xl mx-auto px-6 py-16">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <div class="card reveal border border-slate-800 rounded-xl p-6">
-      <span class="text-xs font-mono text-cyan-400 block mb-2">Academic</span>
-      <h3 class="text-lg font-bold text-white">B.Sc. in Information Technology</h3>
+    <div class="card reveal border border-slate-800 rounded-xl p-7">
+      <span class="text-xs font-mono text-cyan-400 block mb-2">// Academic</span>
+      <h3 class="text-xl font-bold text-white">B.Sc. in Information Technology</h3>
       <p class="text-sm font-mono text-slate-300 mt-1">Sinai University</p>
-      <div class="text-xs font-mono text-slate-500 mt-2">Expected graduation: 2027</div>
-      <p class="text-xs text-slate-400 mt-3 leading-relaxed">Coursework: networking, operating systems, databases, information security, algorithms.</p>
+      <div class="text-xs font-mono text-slate-500 mt-2">Expected Graduation: 2027</div>
+      <p class="text-xs text-slate-400 mt-4 leading-relaxed">
+        Comprehensive academic foundations in Computer Networks, Operating Systems, Database Management Systems, Information Security, and Algorithms.
+      </p>
     </div>
-    <div class="card reveal border border-slate-800 rounded-xl p-6">
-      <span class="text-xs font-mono text-emerald-400 block mb-2">Certifications & Training</span>
-      <h3 class="text-lg font-bold text-white">AWS Certified Cloud Practitioner</h3>
+    <div class="card reveal border border-slate-800 rounded-xl p-7">
+      <span class="text-xs font-mono text-emerald-400 block mb-2">// Validated Certifications & Training</span>
+      <h3 class="text-xl font-bold text-white">AWS Certified Cloud Practitioner</h3>
       <h4 class="text-base font-semibold text-slate-200 mt-1">AWS Certified Solutions Architect – Associate</h4>
-      <p class="text-xs text-slate-400 mt-3 leading-relaxed">
-        • DEPI / ITI specialized training tracks<br>
-        • Hands-on training in cloud networking, IAM, and securing cloud workloads.
+      <div class="border-t border-slate-800/80 my-3.5"></div>
+      <p class="text-xs text-slate-400 leading-relaxed space-y-1">
+        • <strong>DEPI & ITI Specialized Tracks:</strong> Advanced training in cloud networking, workload defense, and identity management.<br>
+        • <strong>Hands-on Labs:</strong> PortSwigger & TryHackMe cloud defense exercises.
       </p>
     </div>
   </div>
 </section>
 
-<!-- Contact -->
+<!-- Contact Section (High Impact Call to Action) -->
 <section id="contact" class="max-w-4xl mx-auto px-6 pt-16 pb-24 text-center reveal">
-  <div class="border border-cyan-500/30 bg-gradient-to-b from-cyan-950/30 to-[#070b14]/80 backdrop-blur-md rounded-2xl p-10">
-    <h2 class="text-3xl font-extrabold text-white mb-3">Let's work together</h2>
-    <p class="text-slate-400 text-sm max-w-md mx-auto mb-8 font-mono">Open to AWS Cloud Security & Junior Infrastructure roles.</p>
+  <div class="border border-cyan-500/30 bg-gradient-to-b from-cyan-950/40 to-[#070b14]/90 backdrop-blur-md rounded-2xl p-10 sm:p-12 shadow-2xl">
+    <p class="text-xs font-mono text-cyan-400 mb-3 uppercase tracking-widest">// Let's Connect</p>
+    <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-4 tracking-tight leading-snug">
+      "Anyone can build in the cloud;<br class="hidden sm:block" />
+      <span class="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">I build architectures designed to survive it."</span>
+    </h2>
+    <p class="text-slate-300 text-sm max-w-xl mx-auto mb-8 font-mono leading-relaxed">
+      Open to Junior AWS Cloud Security roles, infrastructure engineering opportunities, and technical collaborations.
+    </p>
     <div class="flex flex-wrap justify-center gap-4 text-xs font-mono">
-      <a href="mailto:tymt547@gmail.com" class="px-5 py-3 rounded-lg bg-cyan-500 text-black font-bold hover:bg-cyan-400 transition flex items-center gap-2">
+      <a href="mailto:tymt547@gmail.com" class="px-6 py-3.5 rounded-lg bg-cyan-500 text-black font-bold hover:bg-cyan-400 transition flex items-center gap-2 shadow-lg shadow-cyan-500/20">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        Email me
+        tymt547@gmail.com
       </a>
-      <a href="https://www.linkedin.com/in/abdelrahman-teaima" target="_blank" rel="noopener" class="px-5 py-3 rounded-lg bg-slate-900 border border-slate-700 hover:border-cyan-400 text-slate-300 hover:text-white transition">LinkedIn &nearr;</a>
-      <a href="https://github.com/abdelrahmanmahmo" target="_blank" rel="noopener" class="px-5 py-3 rounded-lg bg-slate-900 border border-slate-700 hover:border-cyan-400 text-slate-300 hover:text-white transition">GitHub &nearr;</a>
+      <a href="https://www.linkedin.com/in/abdelrahman-teaima" target="_blank" rel="noopener" class="px-6 py-3.5 rounded-lg bg-slate-900 border border-slate-700 hover:border-cyan-400 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+        LinkedIn &nearr;
+      </a>
+      <a href="https://github.com/abdelrahmanmahmo" target="_blank" rel="noopener" class="px-6 py-3.5 rounded-lg bg-slate-900 border border-slate-700 hover:border-cyan-400 text-slate-300 hover:text-white transition flex items-center gap-1.5">
+        GitHub &nearr;
+      </a>
     </div>
   </div>
 </section>
 
-<footer class="border-t border-slate-900 py-6 text-center text-xs font-mono text-slate-600">&copy; 2026 Abdelrahman Mahmoud Teaima</footer>
+<footer class="border-t border-slate-900 py-8 text-center text-xs font-mono text-slate-600">
+  &copy; 2026 Abdelrahman Mahmoud Teaima · Architected for Cloud Security
+</footer>
 </div>
 
 <script>
-  // typing
-  const roles=['Cloud Security Engineer','AWS Solutions Architect','AWS Cloud Practitioner'];
+  // Typing animation
+  const roles=['Cloud Security Engineer','AWS Solutions Architect','Zero Trust Infrastructure Specialist'];
   const el=document.getElementById('typed');let r=0,c=0,del=false;
-  (function tick(){const w=roles[r];c+=del?-1:1;el.textContent=w.slice(0,c);let d=del?40:80;
-    if(!del&&c===w.length){del=true;d=1400}else if(del&&c===0){del=false;r=(r+1)%roles.length;d=300}setTimeout(tick,d)})();
-  // reveal
+  (function tick(){const w=roles[r];c+=del?-1:1;el.textContent=w.slice(0,c);let d=del?35:70;
+    if(!del&&c===w.length){del=true;d=1500}else if(del&&c===0){del=false;r=(r+1)%roles.length;d=300}setTimeout(tick,d)})();
+
+  // Intersection observer for smooth reveals
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(n=>io.observe(n));
-  // progress + menu
+
+  // Scroll Progress Bar + Mobile Menu
   const bar=document.getElementById('bar');
   addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
   const m=document.getElementById('mobileNav');
   document.getElementById('menuBtn').onclick=()=>m.classList.toggle('hidden');
   m.querySelectorAll('a').forEach(a=>a.onclick=()=>m.classList.add('hidden'));
-  // network background
+
+  // Network Canvas Background
   (function(){
     const cv=document.getElementById('net'),x=cv.getContext('2d');let W,H,P=[];
     const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
     function size(){W=cv.width=innerWidth;H=cv.height=innerHeight;
-      const n=Math.min(70,Math.floor(W*H/22000));P=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25}))}
+      const n=Math.min(75,Math.floor(W*H/21000));P=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25}))}
     function draw(){x.clearRect(0,0,W,H);
       for(const p of P){if(!still){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1}
         x.fillStyle='rgba(34,211,238,.55)';x.beginPath();x.arc(p.x,p.y,1.6,0,6.283);x.fill()}
